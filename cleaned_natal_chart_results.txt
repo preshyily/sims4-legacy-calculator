@@ -1,0 +1,61 @@
+
+Traits:
+Ambitious
+Dogmatic
+Generous
+Genius
+Idealistic
+Manipulative
+Materialistic
+Moody
+Persistent
+Pessimistic
+Prideful
+Romantic
+
+Aspirations:
+Chief of Mischief
+Fabulously Wealthy
+Mansion Baron
+Master Chef
+Master Mixologist
+Party Animal
+Soulmate
+
+Careers:
+Business
+Criminal
+Culinary
+Freelance Programmer
+Mixologist
+
+Best Skills:
+Charisma
+Gourmet Cooking
+Logic
+Mischief
+Mixology
+
+Worst Skills:
+Fishing
+Gardening
+Handiness
+Programming
+
+Rules:
+Must date at least 5 sims.
+Must earn and save §100,000
+Must host a grand feast.
+Must master charisma
+Must master cooking
+Must master gourmet cooking
+Must master logic
+Must master mischief
+Must master mixology
+Must own a mansion.
+Must own a successful bar.
+Must own multiple businesses.
+Must reach top of business.
+Must reach top of criminal career.
+Must throw a party every week.
+Own a mansion
