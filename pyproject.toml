@@ -2,7 +2,7 @@
 name = "The Sims 4 Birth Legacy Calculator"
 version = "0.1.0"
 description = ""
-authors = ["preshypily@gmail.com>"]
+authors = ["Yeul Nsu <preshypily@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
