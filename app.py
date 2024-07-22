@@ -138,4 +138,4 @@ def create_natal_chart(natal_chart):
     return fig
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(host='0.0.0.0', debug=True)
