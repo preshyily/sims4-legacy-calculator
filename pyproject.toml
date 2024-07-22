@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "The Sims 4 Birth Legacy Calculator"
+name = "sims4-legacy-calculator"
 version = "0.1.0"
 description = ""
 authors = ["Yeul Nsu <preshypily@gmail.com>"]
