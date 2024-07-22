@@ -55,14 +55,14 @@ def index():
         results_data = None
     return render_template('index.html')
 
+@app.route('/health')
+def health():
+    return 'OK', 200
+
 @dash_app.callback(
     Output('natal-chart', 'figure'),
     Input('natal-chart', 'id')
 )
-
-@app.route('/health')
-def health_check():
-    return 'OK', 200
 
 def update_chart(_):
     return chart_data if chart_data else go.Figure()
