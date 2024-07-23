@@ -131,15 +131,15 @@ class CreateLegacyChallenge:
         file_path = 'static/natal_planets_houses_allzodiacs.xlsx'
         df = pd.read_excel(file_path, engine='openpyxl')
         
-        print("DataFrame Content:")
-        print(df.head())  # Print the first few rows of the DataFrame for inspection
+        #print("DataFrame Content:")
+        #print(df.head())  # Print the first few rows of the DataFrame for inspection
         
         # Filter the DataFrame based on the natal chart
         matching_rows = []
         natal_chart = self.natal_chart
         
-        print("Natal Chart:")
-        print(natal_chart)
+        #print("Natal Chart:")
+        #print(natal_chart)
         
         for planet, info in natal_chart.items():
             if isinstance(info, dict):  # Ensure info is a dictionary
@@ -149,7 +149,7 @@ class CreateLegacyChallenge:
                 matching_rows.append(matches)
         
         # Print matching rows for debugging
-        print("Matching Rows:")
+        #print("Matching Rows:")
         for matches in matching_rows:
             print(matches)
         
@@ -160,8 +160,8 @@ class CreateLegacyChallenge:
             print("No matching rows found.")
             return set(), set(), set(), set(), set(), []
         
-        print("Result DataFrame:")
-        print(result_df)
+        #print("Result DataFrame:")
+        #print(result_df)
         
         # Extract the specified columns
         columns_of_interest = [
@@ -296,8 +296,12 @@ def format_birthdate(birthdate, sim_season_days):
     day_of_week = days_of_week[day_of_week_index]
     day_number = day_of_year % sim_season_days + 1
 
-    return f"{season} Year {year}, {day_of_week} {day_number}"
+    if year < 0:
+        year_str = f"{-year} BC"
+    else:
+        year_str = f"{year} AC"
 
+    return f"{season} Year {year_str}, {day_of_week} Day {day_number}"
 
 
 def lat_lon_to_xyz(lat, lon, radius=80.47):

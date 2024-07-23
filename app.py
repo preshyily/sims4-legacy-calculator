@@ -106,11 +106,21 @@ def create_natal_chart(natal_chart):
     fig.add_trace(go.Scatterpolar(
         r=adjusted_radii,
         theta=adjusted_angles,
-        mode='markers+text',
+        mode='markers',
         marker=dict(size=15, color=planet_colors[:len(planets)]),
+        hoverinfo='text',
+        text=planets,
+        showlegend=False
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=adjusted_radii,
+        theta=adjusted_angles,
+        mode='text',
         text=planets,
         textposition='top center',
-        hoverinfo='text',
+        textfont=dict(color='rgba(0,0,0,0)'),  # Make text color transparent
+        hoverinfo='none',  # No additional hover info for this trace
         showlegend=False
     ))
 

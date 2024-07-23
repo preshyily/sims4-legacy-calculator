@@ -82,13 +82,14 @@ label {
 }
 .legacy-rules-column ol li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 5px;
+  word-wrap: break-word;
 }
 
 .legacy-rules-column ol li label {
   margin-left: 5px;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 input[type="checkbox"] {
@@ -102,8 +103,4 @@ input[type="checkbox"] {
 .error {
   color: red;
   display: none;
-}
-
-input[type="checkbox"] {
-    margin-right: 5px;  /* Add some spacing between the checkbox and the label */
 }
