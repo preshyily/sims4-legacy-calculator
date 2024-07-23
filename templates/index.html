@@ -50,11 +50,18 @@
             <label for="current_sim_day">Current Sim Day:</label>
             <input type="number" id="current_sim_day" name="current_sim_day" required><br>
 
+            <label for="sim_year_days">Sim Year Days:</label>
+            <input type="number" id="sim_year_days" name="sim_year_days" min="4" required><br>
+            
+            <label for="sim_season_days">Sim Season Days:</label>
+            <input type="number" id="sim_season_days" name="sim_season_days" min="1" required><br>
+
             <button type="submit">Submit</button>
         </form>
 
         {% if results %}
             <h2>Results</h2> 
+            <p>Birth Date: {{ results.Natal_Chart.formatted_birthdate }}</p>
 
             <div id="natal-chart-container">
                 <!-- Placeholder for the Dash app's graph -->

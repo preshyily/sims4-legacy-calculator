@@ -1,3 +1,4 @@
+#preshypily@gmail.com
 from flask import Flask, request, render_template
 from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objs as go
@@ -24,21 +25,25 @@ def index():
     global chart_data, results_data
     if request.method == 'POST':
         sim_age = int(request.form['sim_age'])
+        sim_year_days = int(request.form['sim_year_days'])
+        sim_season_days = int(request.form['sim_season_days'])
         birth_location = request.form['birth_location']
         x, y, z = map(float, request.form['coordinates'].split(','))
         current_sim_day = int(request.form['current_sim_day'])
-
+        
         sims4_globe = Sims4Globe()
         location = sims4_globe.get_location(birth_location, x, y, z)
 
-        natal_chart = SimNatalChart(sim_age, location, current_sim_day)
-        natal_chart = natal_chart.generate_natal_chart()
+        natal_chart = SimNatalChart(sim_age, location, current_sim_day, sim_year_days, sim_season_days)
+        generated_chart = natal_chart.generate_natal_chart()
 
-        legacychallenge = CreateLegacyChallenge(natal_chart)
+        print(generated_chart['planetary_positions'])
+        
+        legacychallenge = CreateLegacyChallenge(generated_chart['planetary_positions'])
         traits_set, aspirations_set, careers_set, final_best_skills, final_worst_skills, seen_rules = legacychallenge.filter_natal_chart()
 
         # Prepare data for the dashboard
-        chart_data = create_natal_chart(natal_chart)
+        chart_data = create_natal_chart(generated_chart['planetary_positions'])
         results_data = {
             "Traits": traits_set,
             "Aspirations": aspirations_set,
@@ -46,9 +51,10 @@ def index():
             "Best_Skills": final_best_skills,
             "Worst_Skills": final_worst_skills,
             "Rules": seen_rules,
-            "Natal_Chart": chart_data
-        }
-
+            "Natal_Chart": {
+                    "formatted_birthdate": generated_chart["formatted_birthdate"]
+                }
+            }
         return render_template('index.html', results=results_data)
     else:
         chart_data = None
