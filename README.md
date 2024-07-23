@@ -3,6 +3,10 @@
 ## Overview
 The Sims 4 Legacy Calculator is a web application designed to help Sims 4 players generate and analyze natal charts for their Sims. Based on the input data, it provides insights into traits, aspirations, careers, skills, and legacy rules for a Sim. You can access the web application [here](https://sims4-legacy-calculator.onrender.com/).
 
+If you enjoy this tool, please consider buying me a taco here @ https://ko-fi.com/preshy
+
+Please credit and tag my socials if you use my program for a Let's Play or any content. I would love to see it <3
+
 ## Features
 - Generate natal charts for Sims based on age, birth location, and current Sim day.
 - Analyze and filter natal charts to provide traits, aspirations, careers, best and worst skills, and legacy rules.
