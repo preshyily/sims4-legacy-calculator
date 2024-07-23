@@ -1,6 +1,7 @@
 #preshypily@gmail.com
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response, url_for, send_from_directory
 from dash import Dash, dcc, html, Input, Output
+from datetime import datetime, timedelta
 import plotly.graph_objs as go
 import plotly.io as pio
 pio.renderers.default = "browser"
@@ -64,6 +65,26 @@ def index():
 @app.route('/health')
 def health():
     return 'OK', 200
+
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    """Generate sitemap.xml dynamically."""
+    pages = []
+    ten_days_ago = (datetime.now() - timedelta(days=10)).date().isoformat()
+
+    # Static pages
+    for rule in app.url_map.iter_rules():
+        if "GET" in rule.methods and len(rule.arguments) == 0:
+            url = url_for(rule.endpoint, _external=True)
+            pages.append([url, ten_days_ago])
+
+    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+    response = Response(sitemap_xml, mimetype='application/xml')
+    return response
+
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 @dash_app.callback(
     Output('natal-chart', 'figure'),

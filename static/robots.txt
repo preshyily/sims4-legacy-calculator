@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /dashboard/
+Allow: /
+
+
+Sitemap: https://sims4-legacy-calculator.onrender.com/sitemap.xml
