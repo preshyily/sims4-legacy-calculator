@@ -1,47 +1,42 @@
 
 Traits:
-Ambitious
 Cheerful
 Compassionate
+Detached
 Diligent
-Dogmatic
 Escapist
 Foodie
-Generous
-Idealistic
-Manipulative
+Frugal
 Materialistic
 Moody
 Nervous
+Original
 Persistent
 Pessimistic
-Prideful
 Romantic
 
 Aspirations:
-Chief of Mischief
-Mansion Baron
+Fabulously Wealthy
+Leader of the Pack
 Master Chef
 Master Mixologist
 Painter Extraordinaire
-Party Animal
 Soulmate
 
 Careers:
-Business
-Criminal
 Culinary
 Freelance Programmer
-Mixologist
+Investor
 Painter
+Politician
 
 Best Skills:
 Charisma
 Cooking
 Gourmet
 Gourmet Cooking
+Handiness
 Logic
-Mischief
 Mixology
 Painting
 
@@ -49,25 +44,20 @@ Worst Skills:
 Fishing
 Fitness
 Gardening
-Handiness
-Programming
+Mischief
 
 Rules:
 Must complete painter extraordinaire aspiration.
 Must date at least 5 sims.
 Must earn and save §100,000
 Must host a grand feast.
+Must lead a club to success.
+Must live a modest lifestyle.
 Must master charisma
 Must master cooking
 Must master gourmet cooking
 Must master logic
-Must master mischief
 Must master mixology
 Must master painting
 Must mix 10 different excellent drinks.
-Must own a successful bar.
-Must reach top of business.
-Must reach top of criminal career.
 Must reach top of culinary career.
-Must throw a party every week.
-Own a mansion

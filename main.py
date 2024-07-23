@@ -23,14 +23,17 @@ class SimNatalChart:
 
     def calculate_birthdate(self):
         total_days_current_year = self.current_sim_day
-        full_years_passed = self.sim_age // self.SIM_YEAR_DAYS
-        remaining_days = self.sim_age % self.SIM_YEAR_DAYS
-        birth_year = 0 - full_years_passed
-        birth_day_of_year = total_days_current_year - remaining_days
+        full_years_passed = total_days_current_year // self.SIM_YEAR_DAYS
+        remaining_days = total_days_current_year % self.SIM_YEAR_DAYS
+        birth_year = full_years_passed - (self.sim_age // self.SIM_YEAR_DAYS)
+        birth_day_of_year = remaining_days - (self.sim_age % self.SIM_YEAR_DAYS)
 
-        if birth_year <= 0:
-            return (birth_year, birth_day_of_year)
-        return datetime(year=birth_year, month=1, day=1) + timedelta(days=birth_day_of_year)
+        # Adjust for negative days in year calculation
+        while birth_day_of_year < 0:
+            birth_year -= 1
+            birth_day_of_year += self.SIM_YEAR_DAYS
+
+        return (birth_year, birth_day_of_year)
 
     def convert_birthdate_to_days(self, birthdate):
         if isinstance(birthdate, tuple):
@@ -287,8 +290,7 @@ def format_birthdate(birthdate, sim_season_days):
     seasons = ["Spring", "Summer", "Fall", "Winter"]
     days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-    year = birthdate[0]
-    day_of_year = birthdate[1]
+    year, day_of_year = birthdate
 
     season_index = (day_of_year // sim_season_days) % 4
     season = seasons[season_index]
@@ -302,7 +304,6 @@ def format_birthdate(birthdate, sim_season_days):
         year_str = f"{year} AC"
 
     return f"{season} Year {year_str}, {day_of_week} Day {day_number}"
-
 
 def lat_lon_to_xyz(lat, lon, radius=80.47):
     lat_rad = np.deg2rad(lat)
