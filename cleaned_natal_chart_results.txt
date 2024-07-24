@@ -1,159 +1,98 @@
 
 Traits:
-Active
+Angelic
 Bookworm
-Bro
+Charmer
 Cheerful
-Child of the Ocean
-Clingy
+Child of the Village
 Clumsy
+Cringe
 Dance Machine
+Erratic
 Evil
-Family-oriented
-Foodie
-Geek
-Hates Children
-High Maintenance
+Freegan
+Good
+Horse Lover
 Hot-Headed
-Lazy
+Inquisitive
+Lovebug
+Loves Outdoors
 Loyal
-Materialistic
-Neat
-Outgoing
-Perfectionist
-Slob
-Socially Awkward
+Mean
+Noncommittal
+Paranoid
+Rancher
+Recycle Disciple
+Romantically Reserved
 Wise
 
 Aspirations:
-Country Caretaker
-Discerning Dweller
-Enforcer of Order
-Inner Peace
+Live Fast
 Master Chef
+Musical Genius
 Self-Care Specialist
+StrangerVille Mystery
+Whiz Kid
 
 Careers:
-Ask the Grocery Deliverer About Their Dreams (Errands)
+Actor
+Browse the Garden or Grocery Shop in Finchwick (Errands)
 Cheer team member
-Discuss Grocery Deliverer's Dreams with the Mayor (Errands)
-Do I Gnome You? (Errands)
-Not So Useless? (Errands)
-Social media
+Civil designer
+Gardener
+Give a Chocolate Pie to the Grocery Deliverer (Errands)
 
 Best Skills:
-Agility
-Baking
-Communication
-Endurance
-Entrepreneur
-Fitness
-Gardening
-Meditation
-Mental
-Mischief
-Painting
-Photography
-Piano
-Pipe organ
-Potty
-Robotics
-Selvadoradian culture
-Singing
-Wellness
-Writing
-Yoga
+Communication (+4) (+4)
+Yoga (+4) (+4)
+Robotics (+3) (+3)
+Piano (+3) (+3)
+Thinking (+2) (+2)
+Fabrication (+2) (+2)
+Bowling (+2) (+2)
+Rocket science (+2) (+2)
+Jumping (+2) (+2)
+Imagination (+2) (+2)
+Juice fizzing (+2) (+2)
+Logic (+2) (+2)
+Movement (+2) (+2)
+Social (+2) (+2)
+Gemology (+2) (+2)
+Fishing (+2) (+2)
+Archaeology (+2) (+2)
+Skating (+2) (+2)
+Flower arranging (+2) (+2)
+Temperament (+2) (+2)
+Photography (+2) (+2)
+Baking (+2) (+2)
 
 Worst Skills:
-Acting
-Comedy
-Creativity
-Fabrication
-Guitar
-Jumping
-Medium
-Riding
-Skating
-Social
-Thinking
+Robotics (-2) (-2)
+Guitar (-1) (-1)
+Potty (-1) (-1)
+Riding (-1) (-1)
+Skating (-1) (-1)
+Thinking (-1) (-1)
+Bowling (-1) (-1)
+Social (-1) (-1)
+Dancing (-1) (-1)
+Snowboarding (-1) (-1)
+Writing (-1) (-1)
+Creativity (-1) (-1)
+Fabrication (-1) (-1)
 
 Rules:
-Attend a cooking class and learn at least 5 new recipes
 Avoid speaking to family members for a week
-Befriend a lonely sim and change their life
-Befriend at least 5 sims from different cultures
-Befriend the loneliest sim in town
-Care for every type of animal
-Complete the master gardener aspiration
-Complete the master musician aspiration
-Complete the master scientist aspiration
-Complete the master veterinarian aspiration
-Complete the master writer aspiration
-Complete the top actor aspiration
-Complete the top athlete aspiration
-Complete the top dancer aspiration
-Complete the top photographer aspiration
-Complete the top programmer aspiration
-Create drama by spreading secrets about 5 sims
-Create every type of drink
-Create every type of outfit
-Create innovative tech solutions
-Explore every ocean
-Grow and sell rare plants
-Help 5 sims repair their homes
-Help a sim achieve their career goals
-Help a sim achieve their life goals
-Host a birthday party for a pet
-Host a dance party every weekend
-Host a gardening workshop and teach at least 3 sims
+Be the best man or maid of honor at 3 weddings
+Host a bake sale and raise money for charity
+Host a community art fair
+Host a dinner party every week and invite at least 5 different sims
 Host a mystery dinner every month
-Host a talent show and win
-Host a talent show for kids and participate
-Host a weekend retreat for co-workers
-Host a weekly dinner party
-Mastering charisma
-Mastering cooking
-Mastering fitness
-Mastering guitar
-Mastering handiness
-Mastering mixology
-Mastering painting
-Mastering photography
-Mastering piano
-Mastering video gaming
-Mastering violin
-Mentor 3 sims in their careers
-Mentor a young entrepreneur
-Mentor a young sim in their chosen career
-Must achieve the soulmate aspiration by having a strong romantic relationship with at least one sim
-Must adopt and care for 3 pets
-Must become best friends with at least 10 different sims
-Must complete the friend of the world aspiration by making friends with 50 different sims
-Must have a romantic relationship with at least 3 different sims
-Must mentor 5 sims to master their skills
-Must throw and successfully complete 10 different types of social events
 Organize a community art exhibition
-Organize a community cleanup event every season
-Organize a community sports day and participate in at least 3 events
-Organize a flash mob and participate
-Organize a meditation retreat
-Organize a town scavenger hunt
-Participate in a yoga retreat and learn at least 3 new poses
-Play matchmaker and successfully pair up 5 couples
-Prank at least 5 different sims successfully
-Prank call a co-worker
-Prank call a local store
-Prank call a rival business
-Run a successful bar
-Solve every mystery
+Prank call a family member and get caught
 Start a book drive and collect 100 books
-Start a feud with a family member
-Start a rumor that ruins a reputation
-Start a social media campaign for a good cause
-Successfully convince 3 sims to break up with their partners
-Take family photos with 10 different families
-Teach 3 sims a new skill
-Teach 5 sims how to play chess
-Volunteer at a wildlife sanctuary
-Volunteer to coach a youth sports team
-Volunteer to lead a scout troop
+Start a charity organization and host monthly fundraising events
+Start a club and recruit 10 members
+Start a prank war with a family member
+Throw a surprise engagement party
+Visit a new community lot and meet 5 new sims every week

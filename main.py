@@ -130,42 +130,43 @@ class CreateLegacyChallenge:
 
     def __init__(self, natal_chart):
         self.natal_chart = natal_chart
-    
+
     def filter_natal_chart(self):
         result_text = ""
         file_path = 'static/natal_planets_houses_allzodiacs.xlsx'
         df = pd.read_excel(file_path, engine='openpyxl')
-    
+
         matching_rows = []
         natal_chart = self.natal_chart
-    
+
         for planet, info in natal_chart.items():
             if isinstance(info, dict):
                 matches = df[(df['Planet'] == planet.title())
                              & (df['Zodiac'] == info['sign']) &
                              (df['House'] == info['house'])]
                 matching_rows.append(matches)
-    
+
         if matching_rows:
             result_df = pd.concat(matching_rows)
         else:
             print("No matching rows found.")
-            return set(), set(), set(), set(), set(), []
-    
+            return set(), set(), set(), {}, {}, []
+
         columns_of_interest = [
             'Trait(s)', 'Aspiration(s)', 'Career', 'Best Skill(s)',
             'Worst Skill(s)', 'Rule(s)'
         ]
         result_df = result_df[columns_of_interest]
-    
-        traits_set, aspirations_set, careers_set = set(), set(), set()
-        best_skills_set, worst_skills_set, rules_list = set(), set(), []
-    
+
+        traits_counts, aspirations_set, careers_set = {}, set(), set()
+        best_skills_counts, worst_skills_counts, rules_list = {}, {}, []
+
         separators = [',', '.']
-    
+
         aspiration_counts = {}
         career_counts = {}
-    
+        rule_counts = {}
+
         for _, row in result_df.iterrows():
             traits = row['Trait(s)'].split(', ')
             aspirations = row['Aspiration(s)'].split(', ')
@@ -173,111 +174,91 @@ class CreateLegacyChallenge:
             best_skills = row['Best Skill(s)'].split(', ')
             worst_skills = row['Worst Skill(s)'].split(', ')
             rules = row['Rule(s)'].split('. ')
-    
+
             for trait in traits:
-                traits_set.add(clean_split(trait, separators))
-    
+                trait_cleaned = clean_split(trait, separators)
+                if trait_cleaned in traits_counts:
+                    traits_counts[trait_cleaned] += 1
+                else:
+                    traits_counts[trait_cleaned] = 1
+
             for aspiration in aspirations:
                 aspirations_set.add(clean_split(aspiration, separators))
                 if aspiration in aspiration_counts:
                     aspiration_counts[aspiration] += 1
                 else:
                     aspiration_counts[aspiration] = 1
-    
+
             for career in careers:
                 careers_set.add(clean_split(career, separators))
                 if career in career_counts:
                     career_counts[career] += 1
                 else:
                     career_counts[career] = 1
-    
+
             for skill in best_skills:
-                best_skills_set.add(clean_split(skill, separators))
-    
+                skill_cleaned = clean_split(skill, separators)
+                if skill_cleaned in best_skills_counts:
+                    best_skills_counts[skill_cleaned] += 1
+                else:
+                    best_skills_counts[skill_cleaned] = 1
+
             for skill in worst_skills:
-                worst_skills_set.add(clean_split(skill, separators))
-    
+                skill_cleaned = clean_split(skill, separators)
+                if skill_cleaned in worst_skills_counts:
+                    worst_skills_counts[skill_cleaned] += 1
+                else:
+                    worst_skills_counts[skill_cleaned] = 1
+
             for rule in rules:
                 if "Must master" in rule:
                     rule_parts = rule.split(" and ")
                     for part in rule_parts:
                         part_cleaned = part.replace("Must master", "").strip().capitalize()
-                        rules_list.append(f"Must master {part_cleaned}")
+                        rule_cleaned = f"Must master {part_cleaned}"
                 else:
                     rule_parts = rule.split(", ")
                     for part in rule_parts:
                         part_cleaned = part.capitalize().strip()
                         if part_cleaned.startswith("And "):
                             part_cleaned = part_cleaned[4:]
-                        rules_list.append(part_cleaned)
-    
+                        rule_cleaned = part_cleaned
+
+                if rule_cleaned in rule_counts:
+                    rule_counts[rule_cleaned] += 1
+                else:
+                    rule_counts[rule_cleaned] = 1
+                rules_list.append(rule_cleaned)
+
         top_aspirations = sorted(aspiration_counts, key=aspiration_counts.get, reverse=True)[:6]
         top_careers = sorted(career_counts, key=career_counts.get, reverse=True)[:6]
-    
-        rules_set = set(rules_list)
-        rules_list = sorted(rules_set)
-        final_rules = []
-        seen_rules = set()
-    
-        for rule in rules_list:
-            if rule not in seen_rules:
-                if ", " in rule:
-                    rule_parts = rule.split(", ")
-                    for part in rule_parts:
-                        part_cleaned = part.capitalize().strip()
-                        if part_cleaned not in seen_rules:
-                            final_rules.append(part_cleaned)
-                            seen_rules.add(part_cleaned)
-                else:
-                    final_rules.append(rule)
-                    seen_rules.add(rule.capitalize().strip())
-    
-        best_skills_counts = {skill: 0 for skill in best_skills_set}
-        worst_skills_counts = {skill: 0 for skill in worst_skills_set}
-    
-        for _, row in result_df.iterrows():
-            best_skills = row['Best Skill(s)'].split(', ')
-            worst_skills = row['Worst Skill(s)'].split(', ')
-    
-            for skill in best_skills:
-                skill_cleaned = clean_split(skill, separators)
-                if skill_cleaned in best_skills_counts:
-                    best_skills_counts[skill_cleaned] += 1
-    
-            for skill in worst_skills:
-                skill_cleaned = clean_split(skill, separators)
-                if skill_cleaned in worst_skills_counts:
-                    worst_skills_counts[skill_cleaned] += 1
-    
-        all_skills = best_skills_set.union(worst_skills_set)
-        for skill in all_skills:
-            if skill not in best_skills_counts:
-                best_skills_counts[skill] = 0
-            if skill not in worst_skills_counts:
-                worst_skills_counts[skill] = 0
-    
+        top_rules = sorted(rule_counts, key=rule_counts.get, reverse=True)[:20]
+        top_rules.sort()
+
         final_best_skills = {
-            skill for skill in best_skills_set
-            if best_skills_counts[skill] > worst_skills_counts[skill]
+            f"{skill} (+{count+1})": count for skill, count in best_skills_counts.items()
         }
         final_worst_skills = {
-            skill for skill in worst_skills_set
-            if worst_skills_counts[skill] > best_skills_counts[skill]
+            f"{skill} (-{count})": count for skill, count in worst_skills_counts.items()
         }
-    
-        result_text += "\nTraits:\n" + "\n".join(sorted(traits_set)) + "\n\n"
+
+        # Sort traits by occurrences
+        sorted_traits = sorted(traits_counts, key=traits_counts.get, reverse=True)
+        sorted_traits.sort()
+
+        result_text += "\nTraits:\n" + "\n".join(sorted(sorted_traits)) + "\n\n"
         result_text += "Aspirations:\n" + "\n".join(sorted(top_aspirations)) + "\n\n"
         result_text += "Careers:\n" + "\n".join(sorted(top_careers)) + "\n\n"
-        result_text += "Best Skills:\n" + "\n".join(sorted(final_best_skills)) + "\n\n"
-        result_text += "Worst Skills:\n" + "\n".join(sorted(final_worst_skills)) + "\n\n"
-        result_text += "Rules:\n" + "\n".join(sorted(seen_rules)) + "\n"
-    
+        result_text += "Best Skills:\n" + "\n".join([f"{skill} (+{count+1})" for skill, count in sorted(final_best_skills.items(), key=lambda item: item[1], reverse=True)]) + "\n\n"
+        result_text += "Worst Skills:\n" + "\n".join([f"{skill} (-{count})" for skill, count in sorted(final_worst_skills.items(), key=lambda item: item[1], reverse=True)]) + "\n\n"
+        result_text += "Rules:\n" + "\n".join(top_rules) + "\n"
+
         output_file_path = 'cleaned_natal_chart_results.txt'
-    
+
         with open(output_file_path, 'w') as file:
             file.write(result_text)
-    
-        return traits_set, top_aspirations, top_careers, final_best_skills, final_worst_skills, seen_rules
+
+        return sorted_traits, top_aspirations, top_careers, final_best_skills, final_worst_skills, top_rules
 
 def format_birthdate(birthdate, sim_season_days):
     seasons = ["Spring", "Summer", "Fall", "Winter"]
@@ -298,7 +279,7 @@ def format_birthdate(birthdate, sim_season_days):
 
     return f"{season} Year {year_str}, {day_of_week} Day {day_number}"
 
-        
+
 def lat_lon_to_xyz(lat, lon, radius=80.47):
     lat_rad = np.deg2rad(lat)
     lon_rad = np.deg2rad(lon)
