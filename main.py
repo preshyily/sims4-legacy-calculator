@@ -126,7 +126,6 @@ class SimNatalChart:
 
 
 
-
 class CreateLegacyChallenge:
 
     def __init__(self, natal_chart):
@@ -164,6 +163,9 @@ class CreateLegacyChallenge:
     
         separators = [',', '.']
     
+        aspiration_counts = {}
+        career_counts = {}
+    
         for _, row in result_df.iterrows():
             traits = row['Trait(s)'].split(', ')
             aspirations = row['Aspiration(s)'].split(', ')
@@ -177,9 +179,17 @@ class CreateLegacyChallenge:
     
             for aspiration in aspirations:
                 aspirations_set.add(clean_split(aspiration, separators))
+                if aspiration in aspiration_counts:
+                    aspiration_counts[aspiration] += 1
+                else:
+                    aspiration_counts[aspiration] = 1
     
             for career in careers:
                 careers_set.add(clean_split(career, separators))
+                if career in career_counts:
+                    career_counts[career] += 1
+                else:
+                    career_counts[career] = 1
     
             for skill in best_skills:
                 best_skills_set.add(clean_split(skill, separators))
@@ -200,6 +210,9 @@ class CreateLegacyChallenge:
                         if part_cleaned.startswith("And "):
                             part_cleaned = part_cleaned[4:]
                         rules_list.append(part_cleaned)
+    
+        top_aspirations = sorted(aspiration_counts, key=aspiration_counts.get, reverse=True)[:6]
+        top_careers = sorted(career_counts, key=career_counts.get, reverse=True)[:6]
     
         rules_set = set(rules_list)
         rules_list = sorted(rules_set)
@@ -253,8 +266,8 @@ class CreateLegacyChallenge:
         }
     
         result_text += "\nTraits:\n" + "\n".join(sorted(traits_set)) + "\n\n"
-        result_text += "Aspirations:\n" + "\n".join(sorted(aspirations_set)) + "\n\n"
-        result_text += "Careers:\n" + "\n".join(sorted(careers_set)) + "\n\n"
+        result_text += "Aspirations:\n" + "\n".join(sorted(top_aspirations)) + "\n\n"
+        result_text += "Careers:\n" + "\n".join(sorted(top_careers)) + "\n\n"
         result_text += "Best Skills:\n" + "\n".join(sorted(final_best_skills)) + "\n\n"
         result_text += "Worst Skills:\n" + "\n".join(sorted(final_worst_skills)) + "\n\n"
         result_text += "Rules:\n" + "\n".join(sorted(seen_rules)) + "\n"
@@ -264,9 +277,7 @@ class CreateLegacyChallenge:
         with open(output_file_path, 'w') as file:
             file.write(result_text)
     
-        return traits_set, aspirations_set, careers_set, final_best_skills, final_worst_skills, seen_rules
-    
-
+        return traits_set, top_aspirations, top_careers, final_best_skills, final_worst_skills, seen_rules
 
 def format_birthdate(birthdate, sim_season_days):
     seasons = ["Spring", "Summer", "Fall", "Winter"]
