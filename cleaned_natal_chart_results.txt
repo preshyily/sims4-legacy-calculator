@@ -1,98 +1,97 @@
 
 Traits:
-Angelic
-Bookworm
-Charmer
+Active
+Bro
 Cheerful
-Child of the Village
+Child of the Ocean
+Clingy
 Clumsy
-Cringe
 Dance Machine
-Erratic
-Evil
-Freegan
-Good
-Horse Lover
+Family-oriented
+Foodie
+Geek
+Hates Children
+High Maintenance
 Hot-Headed
-Inquisitive
-Lovebug
-Loves Outdoors
+Lazy
 Loyal
-Mean
-Noncommittal
-Paranoid
-Rancher
+Materialistic
+Neat
+Outgoing
+Perfectionist
 Recycle Disciple
-Romantically Reserved
+Slob
+Socially Awkward
 Wise
 
 Aspirations:
-Live Fast
+Country Caretaker
+Discerning Dweller
+Enforcer of Order
+Inner Peace
 Master Chef
-Musical Genius
 Self-Care Specialist
-StrangerVille Mystery
-Whiz Kid
 
 Careers:
-Actor
-Browse the Garden or Grocery Shop in Finchwick (Errands)
+Ask the Grocery Deliverer About Their Dreams (Errands)
 Cheer team member
-Civil designer
-Gardener
-Give a Chocolate Pie to the Grocery Deliverer (Errands)
+Discuss Grocery Deliverer's Dreams with the Mayor (Errands)
+Do I Gnome You? (Errands)
+Not So Useless? (Errands)
+Social media
 
 Best Skills:
-Communication (+4) (+4)
-Yoga (+4) (+4)
-Robotics (+3) (+3)
-Piano (+3) (+3)
-Thinking (+2) (+2)
-Fabrication (+2) (+2)
-Bowling (+2) (+2)
-Rocket science (+2) (+2)
-Jumping (+2) (+2)
-Imagination (+2) (+2)
-Juice fizzing (+2) (+2)
-Logic (+2) (+2)
-Movement (+2) (+2)
-Social (+2) (+2)
-Gemology (+2) (+2)
-Fishing (+2) (+2)
-Archaeology (+2) (+2)
-Skating (+2) (+2)
-Flower arranging (+2) (+2)
-Temperament (+2) (+2)
-Photography (+2) (+2)
+Potty (+4) (+4)
+Photography (+4) (+4)
+Agility (+3) (+3)
+Yoga (+3) (+3)
+Singing (+3) (+3)
+Endurance (+3) (+3)
+Painting (+3) (+3)
+Mischief (+2) (+2)
+Wellness (+2) (+2)
+Entrepreneur (+2) (+2)
+Fitness (+2) (+2)
+Piano (+2) (+2)
+Gardening (+2) (+2)
+Robotics (+2) (+2)
+Pipe organ (+2) (+2)
+Meditation (+2) (+2)
+Mental (+2) (+2)
+Selvadoradian culture (+2) (+2)
+Writing (+2) (+2)
 Baking (+2) (+2)
+Motor (+2) (+2)
 
 Worst Skills:
-Robotics (-2) (-2)
-Guitar (-1) (-1)
-Potty (-1) (-1)
-Riding (-1) (-1)
+Comedy (-2) (-2)
 Skating (-1) (-1)
+Medium (-1) (-1)
+Jumping (-1) (-1)
 Thinking (-1) (-1)
-Bowling (-1) (-1)
+Photography (-1) (-1)
+Singing (-1) (-1)
+Riding (-1) (-1)
+Guitar (-1) (-1)
+Piano (-1) (-1)
 Social (-1) (-1)
-Dancing (-1) (-1)
-Snowboarding (-1) (-1)
-Writing (-1) (-1)
+Acting (-1) (-1)
 Creativity (-1) (-1)
-Fabrication (-1) (-1)
+Communication (-1) (-1)
 
 Rules:
 Avoid speaking to family members for a week
-Be the best man or maid of honor at 3 weddings
-Host a bake sale and raise money for charity
-Host a community art fair
-Host a dinner party every week and invite at least 5 different sims
-Host a mystery dinner every month
-Organize a community art exhibition
-Prank call a family member and get caught
+Create drama by spreading secrets about 5 sims
+Help a sim achieve their life goals
+Host a dance party every weekend
+Host a weekend retreat for co-workers
+Mentor 3 sims in their careers
+Mentor a young sim in their chosen career
+Organize a community cleanup event every season
+Organize a community sports day and participate in at least 3 events
+Organize a meditation retreat
+Prank call a rival business
+Start a book club and host weekly meetings
 Start a book drive and collect 100 books
-Start a charity organization and host monthly fundraising events
-Start a club and recruit 10 members
-Start a prank war with a family member
-Throw a surprise engagement party
-Visit a new community lot and meet 5 new sims every week
+Start a rumor that ruins a reputation
+Successfully convince 3 sims to break up with their partners

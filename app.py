@@ -29,7 +29,15 @@ def index():
         sim_year_days = int(request.form['sim_year_days'])
         sim_season_days = int(request.form['sim_season_days'])
         birth_location = request.form['birth_location']
-        x, y, z = map(float, request.form['coordinates'].split(','))
+        coordinates = request.form['coordinates']
+        if coordinates:
+            try:
+                x, y, z = map(float, coordinates.split(','))
+            except ValueError:
+                x, y, z = 0.0, 0.0, 0.0  # Default coordinates if not provided or invalid
+        else:
+            x, y, z = 0.0, 0.0, 0.0  # Default coordinates if not provided
+        
         current_sim_day = int(request.form['current_sim_day'])
         
         sims4_globe = Sims4Globe()
