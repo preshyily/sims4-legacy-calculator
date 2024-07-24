@@ -1,63 +1,177 @@
 
 Traits:
+Active
+Bookworm
+Bro
 Cheerful
-Compassionate
-Detached
-Diligent
-Escapist
+Child of the Ocean
+Clingy
+Clumsy
+Dance Machine
+Evil
+Family-oriented
 Foodie
-Frugal
+Geek
+Hates Children
+High Maintenance
+Hot-Headed
+Lazy
+Loyal
 Materialistic
-Moody
-Nervous
-Original
-Persistent
-Pessimistic
-Romantic
+Neat
+Outgoing
+Perfectionist
+Slob
+Socially Awkward
+Wise
 
 Aspirations:
-Fabulously Wealthy
-Leader of the Pack
+Big Happy Family
+Country Caretaker
+Discerning Dweller
+Enforcer of Order
+Friend to the World
+Inner Peace
+Lord of the Knits
 Master Chef
-Master Mixologist
-Painter Extraordinaire
-Soulmate
+Mt
+Renaissance Sim
+Self-Care Specialist
+StrangerVille Mystery
+Successful Lineage
+Super Parent
+Vampire Family
 
 Careers:
-Culinary
-Freelance Programmer
-Investor
-Painter
-Politician
+Another Useless Tourist (Errands)
+Ask the Grocery Deliverer About Their Dreams (Errands)
+Cheer team member
+Deliver a Jar of Mayonnaise to Agnes Crumplebottom (Errands)
+Discuss Grocery Deliverer's Dreams with the Mayor (Errands)
+Do I Gnome You? (Errands)
+Engineer
+Interior decorator
+Not So Useless? (Errands)
+Scold Grocery Owner (Errands)
+Soccer team player
+Social media
+Sow What's New (Errands)
+Style influencer
+Tech guru
 
 Best Skills:
-Charisma
-Cooking
-Gourmet
-Gourmet Cooking
-Handiness
-Logic
-Mixology
-Painting
-
-Worst Skills:
-Fishing
+Agility
+Baking
+Communication
+Endurance
+Entrepreneur
 Fitness
 Gardening
+Meditation
+Mental
 Mischief
+Painting
+Photography
+Piano
+Pipe organ
+Potty
+Robotics
+Selvadoradian culture
+Singing
+Wellness
+Writing
+Yoga
+
+Worst Skills:
+Acting
+Comedy
+Creativity
+Fabrication
+Guitar
+Jumping
+Medium
+Riding
+Skating
+Social
+Thinking
 
 Rules:
-Must complete painter extraordinaire aspiration.
-Must date at least 5 sims.
-Must earn and save §100,000
-Must host a grand feast.
-Must lead a club to success.
-Must live a modest lifestyle.
-Must master charisma
-Must master cooking
-Must master gourmet cooking
-Must master logic
-Must master mixology
-Must master painting
-Must mix 10 different excellent drinks.
-Must reach top of culinary career.
+Attend a cooking class and learn at least 5 new recipes
+Avoid speaking to family members for a week
+Befriend a lonely sim and change their life
+Befriend at least 5 sims from different cultures
+Befriend the loneliest sim in town
+Care for every type of animal
+Complete the master gardener aspiration
+Complete the master musician aspiration
+Complete the master scientist aspiration
+Complete the master veterinarian aspiration
+Complete the master writer aspiration
+Complete the top actor aspiration
+Complete the top athlete aspiration
+Complete the top dancer aspiration
+Complete the top photographer aspiration
+Complete the top programmer aspiration
+Create drama by spreading secrets about 5 sims
+Create every type of drink
+Create every type of outfit
+Create innovative tech solutions
+Explore every ocean
+Grow and sell rare plants
+Help 5 sims repair their homes
+Help a sim achieve their career goals
+Help a sim achieve their life goals
+Host a birthday party for a pet
+Host a dance party every weekend
+Host a gardening workshop and teach at least 3 sims
+Host a mystery dinner every month
+Host a talent show and win
+Host a talent show for kids and participate
+Host a weekend retreat for co-workers
+Host a weekly dinner party
+Mastering charisma
+Mastering cooking
+Mastering fitness
+Mastering guitar
+Mastering handiness
+Mastering mixology
+Mastering painting
+Mastering photography
+Mastering piano
+Mastering video gaming
+Mastering violin
+Mentor 3 sims in their careers
+Mentor a young entrepreneur
+Mentor a young sim in their chosen career
+Must achieve the soulmate aspiration by having a strong romantic relationship with at least one sim
+Must adopt and care for 3 pets
+Must become best friends with at least 10 different sims
+Must complete the friend of the world aspiration by making friends with 50 different sims
+Must have a romantic relationship with at least 3 different sims
+Must mentor 5 sims to master their skills
+Must throw and successfully complete 10 different types of social events
+Organize a community art exhibition
+Organize a community cleanup event every season
+Organize a community sports day and participate in at least 3 events
+Organize a flash mob and participate
+Organize a meditation retreat
+Organize a town scavenger hunt
+Participate in a yoga retreat and learn at least 3 new poses
+Play matchmaker and successfully pair up 5 couples
+Prank at least 5 different sims successfully
+Prank call a co-worker
+Prank call a local store
+Prank call a rival business
+Run a successful bar
+Solve every mystery
+Start a book drive and collect 100 books
+Start a feud with a family member
+Start a rumor that ruins a reputation
+Start a social media campaign for a good cause
+Successfully convince 3 sims to break up with their partners
+Take family photos with 10 different families
+Teach 3 sims a new skill
+Teach 5 sims how to play chess
+Volunteer at a wildlife sanctuary
+Volunteer to coach a youth sports team
+Volunteer to lead a scout troop

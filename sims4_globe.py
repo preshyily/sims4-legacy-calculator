@@ -79,18 +79,24 @@ def interpolate_points(lat1, lon1, lat2, lon2, num_points, radius):
 # Create the 3D globe
 fig = go.Figure()
 
-# Generate data for a sphere
+# Generate data for a sphere with a gradient blue color
 u = np.linspace(0, 2 * np.pi, 100)
 v = np.linspace(0, np.pi, 100)
 x = radius * np.outer(np.cos(u), np.sin(v))
 y = radius * np.outer(np.sin(u), np.sin(v))
 z = radius * np.outer(np.ones(np.size(u)), np.cos(v))
 
-# Add the globe surface
+# Create a gradient blue color for the globe
+colorscale = [
+    [0, 'rgb(135, 206, 250)'],  # Light blue
+    [1, 'rgb(0, 0, 128)']       # Dark blue
+]
+
+# Add the globe surface with the gradient blue color
 fig.add_trace(go.Surface(
     x=x, y=y, z=z,
-    colorscale='Blues',
-    opacity=0.5,
+    colorscale=colorscale,
+    opacity=0.5,  # Make the globe slightly transparent for better visibility
     showscale=False
 ))
 
@@ -126,7 +132,7 @@ for loc, color in zip(locations, colors):
         y=y_coords,
         z=z_coords,
         color=color,
-        opacity=0.7
+        opacity=1
     ))
 
     # Plot the borders
@@ -135,7 +141,7 @@ for loc, color in zip(locations, colors):
         y=y_coords,
         z=z_coords,
         mode='lines',
-        line=dict(color='black', width=2)
+        line=dict(color='white', width=2)
     ))
 
     # Plot the label at the center
@@ -150,12 +156,25 @@ for loc, color in zip(locations, colors):
         textfont=dict(size=12, color='white')
     ))
 
-# Set plot limits
-fig.update_layout(scene=dict(
-    xaxis=dict(visible=False),
-    yaxis=dict(visible=False),
-    zaxis=dict(visible=False)
-))
+# Set plot limits, remove the legend, and make the background transparent
+fig.update_layout(
+    scene=dict(
+        xaxis=dict(visible=False),
+        yaxis=dict(visible=False),
+        zaxis=dict(visible=False),
+        bgcolor='rgba(0,0,0,0)'  # Set the scene background to be transparent
+    ),
+    showlegend=False,  # Disable the legend
+    paper_bgcolor='rgba(0,0,0,0)',  # Set the paper background to be transparent
+    margin=dict(l=0, r=0, b=0, t=0),
+    scene_camera=dict(
+        eye=dict(x=0.8, y=0.8, z=0.8)  # Adjust these values to set the initial zoom level
+    )
+)
+
+# Save the figure as an HTML file
+fig.write_html("static/sims4_worlds_globe.html")
+
 
 class Sims4Globe:
     def __init__(self):
@@ -179,5 +198,3 @@ class Sims4Globe:
         else:
             raise ValueError(f"World '{world_name}' not found.")
 
-# Save the figure as an HTML file
-fig.write_html("sims4_worlds_globe.html")

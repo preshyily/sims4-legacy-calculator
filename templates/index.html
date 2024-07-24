@@ -9,8 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Sims 4 Natal Chart Generator">
     <meta property="og:description" content="Generate detailed natal charts for your Sims in The Sims 4. Discover traits, aspirations, careers, and skills based on simulated birth dates and locations.">
-    <meta property="og:image" content="http://yourdomain.com/static/images/og-image.jpg">
-    <meta property="og:url" content="http://yourdomain.com">
+    <meta property="og:url" content="https://github.com/preshyily/sims4-legacy-calculator">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sims 4 Natal Chart Generator">
@@ -28,53 +27,60 @@
 <body>
     <div class="container">
         <h1>Sims 4 Natal Chart</h1>
-        <form method="POST" onsubmit="return validateForm()">
-            <label for="sim_age">Sim Age:</label>
-            <input type="number" id="sim_age" name="sim_age" required><br>
-
-            <label for="birth_location">Birth Location:</label>
-            <select id="birth_location" name="birth_location" required>
-                <option value="Willow Creek">Willow Creek</option>
-                <option value="Newcrest">Newcrest</option>
-                <option value="Oasis Springs">Oasis Springs</option>
-                <option value="Granite Falls">Granite Falls</option>
-                <option value="Magnolia Promenade">Magnolia Promenade</option>
-                <option value="Windenburg">Windenburg</option>
-                <option value="San Myshuno">San Myshuno</option>
-                <option value="Forgotten Hollow">Forgotten Hollow</option>
-                <option value="Brindleton Bay">Brindleton Bay</option>
-                <option value="Selvadorada">Selvadorada</option>
-                <option value="Del Sol Valley">Del Sol Valley</option>
-                <option value="Strangerville">Strangerville</option>
-                <option value="Sulani">Sulani</option>
-                <option value="Glimmerbrook">Glimmerbrook</option>
-                <option value="Britechester">Britechester</option>
-                <option value="Evergreen Harbor">Evergreen Harbor</option>
-                <option value="Mt. Komorebi">Mt. Komorebi</option>
-                <option value="Henford-On-Bagley">Henford-On-Bagley</option>
-                <option value="Taratosa">Taratosa</option>
-                <option value="Moonwood Mill">Moonwood Mill</option>
-                <option value="Copperdale">Copperdale</option>
-                <option value="San Sequoia">San Sequoia</option>
-                <option value="Chesnut Ridge">Chesnut Ridge</option>
-            </select><br>
-
-            <label for="coordinates">Coordinates (x, y, z):</label>
-            <input type="text" id="coordinates" name="coordinates" oninput="validateCoordinates()" required>
-            <span id="coordinates-error" class="error">Invalid format. Use "x, y, z".</span><br>
-
-            <label for="current_sim_day">Current Sim Day:</label>
-            <input type="number" id="current_sim_day" name="current_sim_day" required><br>
-
-            <label for="sim_year_days">Sim Year Days:</label>
-            <input type="number" id="sim_year_days" name="sim_year_days" min="4" required><br>
+        <div class="form-and-iframe">
+            <form method="POST" onsubmit="return validateForm()">
+                <label for="sim_age">Sim Age:</label>
+                <input type="number" id="sim_age" name="sim_age" required><br>
+    
+                <label for="birth_location">Birth Location:</label>
+                <select id="birth_location" name="birth_location" required>
+                    <option value="Willow Creek">Willow Creek</option>
+                    <option value="Newcrest">Newcrest</option>
+                    <option value="Oasis Springs">Oasis Springs</option>
+                    <option value="Granite Falls">Granite Falls</option>
+                    <option value="Magnolia Promenade">Magnolia Promenade</option>
+                    <option value="Windenburg">Windenburg</option>
+                    <option value="San Myshuno">San Myshuno</option>
+                    <option value="Forgotten Hollow">Forgotten Hollow</option>
+                    <option value="Brindleton Bay">Brindleton Bay</option>
+                    <option value="Selvadorada">Selvadorada</option>
+                    <option value="Del Sol Valley">Del Sol Valley</option>
+                    <option value="Strangerville">Strangerville</option>
+                    <option value="Sulani">Sulani</option>
+                    <option value="Glimmerbrook">Glimmerbrook</option>
+                    <option value="Britechester">Britechester</option>
+                    <option value="Evergreen Harbor">Evergreen Harbor</option>
+                    <option value="Mt. Komorebi">Mt. Komorebi</option>
+                    <option value="Henford-On-Bagley">Henford-On-Bagley</option>
+                    <option value="Taratosa">Taratosa</option>
+                    <option value="Moonwood Mill">Moonwood Mill</option>
+                    <option value="Copperdale">Copperdale</option>
+                    <option value="San Sequoia">San Sequoia</option>
+                    <option value="Chesnut Ridge">Chesnut Ridge</option>
+                </select><br>
+    
+                <label for="coordinates">Coordinates (x, y, z):</label>
+                <input type="text" id="coordinates" name="coordinates" oninput="validateCoordinates()" required>
+                <span id="coordinates-error" class="error">Invalid format. Use "x, y, z".</span><br>
+    
+                <label for="current_sim_day">Current Sim Day:</label>
+                <input type="number" id="current_sim_day" name="current_sim_day" required><br>
+    
+                <label for="sim_year_days">Sim Year Days:</label>
+                <input type="number" id="sim_year_days" name="sim_year_days" min="4" required><br>
+                
+                <label for="sim_season_days">Sim Season Days:</label>
+                <input type="number" id="sim_season_days" name="sim_season_days" min="1" required><br>
+    
+                <button type="submit">Submit</button>
+            </form>
             
-            <label for="sim_season_days">Sim Season Days:</label>
-            <input type="number" id="sim_season_days" name="sim_season_days" min="1" required><br>
+            <!-- 
+            <iframe src="{{ url_for('static', filename='sims4_worlds_globe.html') }}" style="width: 50%; height: 500px; border: none;"></iframe> 
+            -->
 
-            <button type="submit">Submit</button>
-        </form>
-
+        </div>
+    
         {% if results %}
             <h2>Results</h2> 
             <p>Birth Date: {{ results.Natal_Chart.formatted_birthdate }}</p>

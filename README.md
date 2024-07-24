@@ -162,8 +162,8 @@ These resources provide the mathematical foundations and detailed methods for ac
 ## Contact
 For any queries or support, please contact:
 - **Email:** preshypily@gmail.com
-- **TikTok:** @preshyp.ily
-- **Instagram:** @preshy.ily
+- **TikTok:** [@preshyp.ily](https://www.tiktok.com/@preshyp.ily)
+- **Instagram:** [@preshy.ily](https://www.instagram.com/preshy.ily/)
 
 ## Contributing
 Contributions are welcome! If you have suggestions or improvements, please create a submit request using the Google Form:

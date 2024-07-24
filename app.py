@@ -38,7 +38,7 @@ def index():
         natal_chart = SimNatalChart(sim_age, location, current_sim_day, sim_year_days, sim_season_days)
         generated_chart = natal_chart.generate_natal_chart()
 
-        print(generated_chart['planetary_positions'])
+        #print(generated_chart['planetary_positions'])
         
         legacychallenge = CreateLegacyChallenge(generated_chart['planetary_positions'])
         traits_set, aspirations_set, careers_set, final_best_skills, final_worst_skills, seen_rules = legacychallenge.filter_natal_chart()
@@ -170,6 +170,9 @@ def create_natal_chart(natal_chart):
         ),
         showlegend=False,
         margin=dict(l=40, r=40, b=40, t=40),
+        scene_camera=dict(
+            eye=dict(x=0.5, y=0.5, z=0.5)  # Adjust these values to set the initial zoom level
+        )
     )
 
     return fig

@@ -1,7 +1,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  background-color: #009975;
   margin: 0;
   padding: 0;
 }
@@ -100,6 +100,32 @@ input[type="checkbox"] {
   text-align: center;
   margin-bottom: 10px;
 }
+
+
+.form-and-iframe {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-container {
+    flex: 1;
+    max-width: 45%; /* Adjust the width of the form container */
+    margin-right: 2%;
+}
+
+form {
+  width: 25%;
+}
+
+iframe {
+  flex:1;
+  width: 50%;
+  height: 500px;
+  border: none;
+}
+
+
 .error {
   color: red;
   display: none;
