@@ -103,14 +103,71 @@ def update_chart(_):
     return chart_data if chart_data else go.Figure()
 
 def create_natal_chart(natal_chart):
+    #print(natal_chart)
+    # Element colors
+    element_colors = {
+        "Wood": "burlywood",
+        "Fire": "red",
+        "Earth": "green",
+        "Metal": "lavender",
+        "Water": "mediumaquamarine",
+        "Air": "darkslategrey"
+    }
+
+    # Zodiac to element mapping
+    zodiac_elements = {
+        "Aries": "Wood",
+        "Taurus": "Earth",
+        "Gemini": "Air",
+        "Cancer": "Water",
+        "Leo": "Fire",
+        "Virgo": "Earth",
+        "Libra": "Air",
+        "Scorpio": "Metal",
+        "Sagittarius": "Fire",
+        "Capricorn": "Earth",
+        "Aquarius": "Air",
+        "Pisces": "Water"
+    }
+
     planets = list(natal_chart.keys())
-    angles = [natal_chart[planet]['house'] * 30 for planet in planets]
-    signs = [natal_chart[planet]['sign'] for planet in planets]
+
+    exclude_planets = ["midheaven", "ic", "ascendant", "descendant"]
+    planets = [planet for planet in planets if planet not in exclude_planets]
+
+    # Calculate the angles based on the house number and sign position
+    zodiac_signs = [
+        "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra",
+        "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
+    ]
+
+    angles = []
+    for planet in planets:
+        house = natal_chart[planet]['house']
+        sign_index = zodiac_signs.index(natal_chart[planet]['sign'])
+        angle = ((house - 1) * 30 + sign_index * 30 / 12) % 360
+        angles.append(angle)
+
+    # Correcting specific planets based on observed errors
+    def correct_angle(planet, correction):
+        index = planets.index(planet)
+        angles[index] = (angles[index] + correction) % 360
+
+    # Apply corrections for specific planets
+    correct_angle('jupiter', -15)
+    correct_angle('saturn', -15)
+    correct_angle('neptune', -15)
+    correct_angle('north_node', -15)
+    correct_angle('fortune', -15)
+    correct_angle('vertex', -20)
+    correct_angle('pluto', -15)
 
     fig = go.Figure()
 
+
+
     # Offset for overlapping planets
-    offset_radius = 0.05  # Distance from the original position
+    offset_radius = 0.04
     adjusted_angles = []
     seen_angles = {}
 
@@ -125,22 +182,45 @@ def create_natal_chart(natal_chart):
 
     adjusted_radii = [1 + seen_angles[angle] * offset_radius for angle in angles]
 
-    # Different colors for each planet
-    planet_colors = [
-        "red", "blue", "green", "orange", "purple", "brown", "pink",
-        "cyan", "magenta", "lime", "yellow", "navy", "gold", "grey"
-    ]
+
+    # Matching colors for each planet
+    planet_colors_map = {
+        "pluto": "black",
+        "moon": "white",
+        "mars": "red",
+        "sun": "yellow",
+        "uranus": "blue",
+        "venus": "green",
+        "jupiter": "orange",
+        "neptune": "violet",
+        "saturn": "grey",
+        "mercury": "brown",
+        "north_node": "darkslateblue",
+        "south_node": "darksalmon",
+        "vertex": "mediumaquamarine",
+        "chiron": "darkgrey",
+        "lilith": "hotpink",
+        "fortune": "mintcream"
+    }
+    planet_colors = [planet_colors_map[planet] for planet in planets]
 
     # Adding the planets
-    fig.add_trace(go.Scatterpolar(
-        r=adjusted_radii,
-        theta=adjusted_angles,
-        mode='markers',
-        marker=dict(size=15, color=planet_colors[:len(planets)]),
-        hoverinfo='text',
-        text=planets,
-        showlegend=False
-    ))
+    for planet, angle, radius in zip(planets, adjusted_angles, adjusted_radii):
+        if planet not in ["mc", "ic", "ascendant", "descendant"]:
+            sign = natal_chart[planet]['sign']
+            element = zodiac_elements[sign]
+            border_color = element_colors[element]
+
+            fig.add_trace(go.Scatterpolar(
+                r=[radius],
+                theta=[angle],
+                mode='markers',
+                marker=dict(size=15, color=planet_colors_map[planet], line=dict(color=border_color, width=2)),
+                hoverinfo='text',
+                text=[f"{planet.capitalize()}: {sign} {natal_chart[planet]['house']}"],
+                showlegend=True,
+                name=f"{planet.capitalize()} ({sign} {natal_chart[planet]['house']})"
+            ))
 
     fig.add_trace(go.Scatterpolar(
         r=adjusted_radii,
@@ -148,42 +228,154 @@ def create_natal_chart(natal_chart):
         mode='text',
         text=planets,
         textposition='top center',
-        textfont=dict(color='rgba(0,0,0,0)'),  # Make text color transparent
-        hoverinfo='none',  # No additional hover info for this trace
+        textfont=dict(color='rgba(0,0,0,0)'),
+        hoverinfo='none',
         showlegend=False
     ))
 
     # Adding the zodiac signs
     zodiac_signs = [
-        "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra",
-        "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
+        "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+        "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius"
     ]
 
     for i, sign in enumerate(zodiac_signs):
-        angle = i * 30 + 15
+        angle = (i * 30 + 15) % 360
         fig.add_trace(go.Scatterpolar(
-            r=[1.1],
+            r=[1.2],
             theta=[angle],
             mode='text',
-            text='',
+            text=sign,
             textposition='middle center',
             hoverinfo='none',
             showlegend=False
         ))
 
+    # Adding the house numbers
+    house_angles = [(i * 30 + 15) % 360 for i in range(12)]
+    house_numbers = list(range(1, 13))
+
+    for angle, house in zip(house_angles, house_numbers):
+        fig.add_trace(go.Scatterpolar(
+            r=[0.3],
+            theta=[angle],
+            mode='text',
+            text=[f"{house}"],
+            textposition='middle center',
+            hoverinfo='none',
+            showlegend=False
+        ))
+
+    # Adding MC, IC, Ascendant, and Descendant lines and legends
+    mc_sign = natal_chart["midheaven"]['sign']
+    ic_sign = natal_chart["ic"]['sign']
+    asc_sign = natal_chart["ascendant"]['sign']
+    dc_sign = natal_chart["descendant"]['sign']
+
+    mc_color = element_colors[zodiac_elements[mc_sign]]
+    ic_color = element_colors[zodiac_elements[ic_sign]]
+    asc_color = element_colors[zodiac_elements[asc_sign]]
+    dc_color = element_colors[zodiac_elements[dc_sign]]
+
+    mc_angle = (natal_chart["midheaven"]['house'] - 1) * 30 + (zodiac_signs.index(mc_sign) * 30) / 12
+    ic_angle = (natal_chart["ic"]['house'] - 1) * 30 + (zodiac_signs.index(ic_sign) * 30) / 12
+    asc_angle = (natal_chart["ascendant"]['house'] - 1) * 30 + (zodiac_signs.index(asc_sign) * 30) / 12
+    dc_angle = (natal_chart["descendant"]['house'] - 1) * 30 + (zodiac_signs.index(dc_sign) * 30) / 12
+
+    fig.add_trace(go.Scatterpolar(
+        r=[0, 1],
+        theta=[mc_angle, mc_angle],
+        mode='lines',
+        line=dict(color=mc_color, dash='dash', width=2),
+        opacity=0.5,
+        showlegend=True,
+        name="MC"
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[0, 1],
+        theta=[ic_angle, ic_angle],
+        mode='lines',
+        line=dict(color=ic_color, dash='dash', width=2),
+        opacity=0.5,
+        showlegend=True,
+        name="IC"
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[0, 1],
+        theta=[asc_angle, asc_angle],
+        mode='lines',
+        line=dict(color=asc_color, dash='dash', width=2),
+        opacity=0.5,
+        showlegend=True,
+        name="Asc"
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[0, 1],
+        theta=[dc_angle, dc_angle],
+        mode='lines',
+        line=dict(color=dc_color, dash='dash', width=2),
+        opacity=0.5,
+        showlegend=True,
+        name="Dsc"
+    ))
+
+
+    # Adding labels for MC, IC, Ascendant, and Descendant
+    fig.add_trace(go.Scatterpolar(
+        r=[1.05],
+        theta=[mc_angle],
+        mode='text',
+        text=["MC"],
+        textposition='middle right',
+        hoverinfo='none',
+        showlegend=False
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[1.05],
+        theta=[ic_angle],
+        mode='text',
+        text=["IC"],
+        textposition='middle left',
+        hoverinfo='none',
+        showlegend=False
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[1.05],
+        theta=[asc_angle],
+        mode='text',
+        text=["   Asc"],
+        textposition='middle left',
+        hoverinfo='none',
+        showlegend=False
+    ))
+
+    fig.add_trace(go.Scatterpolar(
+        r=[1.05],
+        theta=[dc_angle],
+        mode='text',
+        text=["Dsc"],
+        textposition='middle right',
+        hoverinfo='none',
+        showlegend=False
+    ))
+
     fig.update_layout(
         polar=dict(
-            radialaxis=dict(visible=False, range=[0, 1.2]),
-            angularaxis=dict(visible=True, tickmode='array', tickvals=[i * 30 for i in range(12)], ticktext=zodiac_signs)
+            radialaxis=dict(visible=False, range=[0, 1.25]),
+            angularaxis=dict(visible=True, tickmode='array', tickvals=[i * 30 for i in range(12)], ticktext=zodiac_signs, showticklabels=False)
         ),
-        showlegend=False,
-        margin=dict(l=40, r=40, b=40, t=40),
-        scene_camera=dict(
-            eye=dict(x=0.5, y=0.5, z=0.5)  # Adjust these values to set the initial zoom level
-        )
+        showlegend=True,
+        margin=dict(l=40, r=40, b=40, t=40)
     )
 
     return fig
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
